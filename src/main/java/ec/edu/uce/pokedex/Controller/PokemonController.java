@@ -8,13 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
 
 @Controller
 @RequestMapping("/pokedex")
-public class PokemonController
-{
+public class PokemonController {
+
     @Autowired
     PokemonDTO pokemonDTO;
     @Autowired
@@ -40,25 +39,34 @@ public class PokemonController
         return "";
     }
 
-
     @GetMapping("/pokemon")
     public String getPokemon(
             @RequestParam(name = "id", required = false) Integer id,
             @RequestParam(name = "name", required = false) String name,
             Model model) {
 
+        int maxId = 1025;
+        int minId = 1;
+
         if (name != null && !name.isEmpty()) {
-            // Buscar Pokémon por nombre (suponiendo que tienes un método para ello)
+            // Buscar Pokémon por nombre
             model.addAttribute("pokemon", pokemonDTO.buscarByName(name));
-        } else if (id != null) {
-            model.addAttribute("pokemon", pokemonDTO.pokemon(id));
         } else {
-            // Si no hay parámetros, mostrar por defecto el Pokémon con ID 1
-            model.addAttribute("pokemon", pokemonDTO.pokemon(1));
+            if (id == null) {
+                id = minId; // Si no hay ID, empezar con el primer Pokémon
+            }
+
+            model.addAttribute("pokemon", pokemonDTO.pokemon(id));
         }
 
-        model.addAttribute("prevId", id != null ? Math.max(1, id - 1) : 1);
-        model.addAttribute("nextId", id != null ? id + 1 : 2);
+        // Lógica de navegación cíclica
+        int prevId = (id <= minId) ? maxId : id - 1;
+        int nextId = (id >= maxId) ? minId : id + 1;
+
+        model.addAttribute("prevId", prevId);
+        model.addAttribute("nextId", nextId);
+
         return "index";
     }
+
 }
