@@ -3,7 +3,7 @@
     --border-stylee: 4px solid white;
 }
 
-html, body {
+html, .bodys {
     background: #dcdcdc; /* Fondo gris sólido */
     width: 100vw;
     min-height: 100vh;
@@ -156,20 +156,19 @@ td, th {
 /* ------------------ BANNER ------------------ */
 .banner {
     /* Ocupa todo el ancho de la pantalla */
-    width: 100%;
+    width: 93%;
     background-color: #f6f5f2;
     display: flex;
     align-items: center;
     justify-content: space-between;
     /* Incrementa el padding para mayor margen interior */
     padding: 30px 60px;
-    min-height: 95px; /* Aumenta esta cifra para mayor altura si lo deseas */
+    min-height: 90px; /* Aumenta esta cifra para mayor altura si lo deseas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Logo (más grande si quieres) */
 .logo {
-    height: 60px;
+    height: 75px;
     width: auto;
 }
 
@@ -185,14 +184,14 @@ td, th {
 /* Contenedor de imágenes del banner (horizontal) */
 .banner-images {
     display: flex;
-    gap: 20px;
+    gap: 65px;
     align-items: center;
     justify-content: flex-end;
 }
 
 .pokemon-image {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
 }
 
@@ -210,7 +209,7 @@ td, th {
 
 /* ------------------ FORMULARIO DE BÚSQUEDA ------------------ */
 .search-section {
-    width: 100%;
+    width: 90%;
     margin: 30px auto;
 }
 
@@ -219,7 +218,7 @@ td, th {
     flex-wrap: wrap; /* Para que se ajusten si la pantalla es más pequeña */
     gap: 15px;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
