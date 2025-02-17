@@ -6,64 +6,87 @@
   <link th:href="@{/style.css}" rel="stylesheet" type="text/css">
   <title>Categoría de Pokémons</title>
 </head>
-<body>
+<body class="body">
 
-<h1>Lista de los Pokémones según la Búqueda</h1>
+<!-- Banner -->
+<header class="banner">
+  <!-- Logo principal (más pequeño) -->
+  <img th:src="@{'/logo_pokemon/imagenpokemon.png'}" alt="Logo de Pokedex" class="h-10 w-10 mr-2">
+  <!-- Texto del banner -->
+  <div class="banner-text"><h1>Lista de Pokémones</h1></div>
+  <!-- Sprites de Pokémon (más pequeños) -->
+  <div class="pokemon-images">
+    <img th:src="@{'/pokemon_sprites/149.png'}" alt="pokemon_sprites" class="pokemon-image">
+    <img th:src="@{'/pokemon_sprites/24.png'}"  alt="pokemon_sprites" class="pokemon-image">
+    <img th:src="@{'/pokemon_sprites/1.png'}"   alt="pokemon_sprites" class="pokemon-image">
+  </div>
+</header>
 
-<!-- Formulario para filtros -->
-<form action="/pokedex/pokemon/filter" method="get">
-  <label for="type">Tipo:</label>
-  <select name="type" id="type">
-    <option value="">Seleccione un tipo</option>
-    <option value="fire">Fuego</option>
-    <option value="water">Agua</option>
-    <option value="grass">Planta</option>
-    <!-- Añadir más tipos según sea necesario -->
-  </select>
+<!-- Título principal -->
+<section class="main-title">
+  <h2>Encuentra tu Pokémon favorito</h2>
+</section>
 
-  <label for="region">Región:</label>
-  <select name="region" id="region">
-    <option value="">Seleccione una región</option>
-    <option value="kanto">Kanto</option>
-    <option value="johto">Johto</option>
-    <option value="sinnoh">Sinnoh</option>
-    <!-- Añadir más regiones según sea necesario -->
-  </select>
+<!-- Formulario de búsqueda -->
+<section class="search-section">
+  <form action="/pokedex/pokemon/filter" method="get" class="search-form">
+    <div class="form-group">
+      <label for="type">Tipo:</label>
+      <select name="type" id="type">
+        <option value="">Seleccione un tipo</option>
+        <option value="fire">Fuego</option>
+        <option value="water">Agua</option>
+        <option value="grass">Planta</option>
+      </select>
+    </div>
 
-  <label for="habitat">Hábitat:</label>
-  <select name="habitat" id="habitat">
-    <option value="">Seleccione un hábitat</option>
-    <option value="forest">Bosque</option>
-    <option value="cave">Cueva</option>
-    <option value="mountain">Montaña</option>
-    <!-- Añadir más hábitats según sea necesario -->
-  </select>
+    <div class="form-group">
+      <label for="region">Región:</label>
+      <select name="region" id="region">
+        <option value="">Seleccione una región</option>
+        <option value="kanto">Kanto</option>
+        <option value="johto">Johto</option>
+        <option value="sinnoh">Sinnoh</option>
+      </select>
+    </div>
 
-  <button type="submit">Buscar</button>
-</form>
+    <div class="form-group">
+      <label for="habitat">Hábitat:</label>
+      <select name="habitat" id="habitat">
+        <option value="">Seleccione un hábitat</option>
+        <option value="forest">Bosque</option>
+        <option value="cave">Cueva</option>
+        <option value="mountain">Montaña</option>
+      </select>
+    </div>
 
-<!-- Mostrar la lista de Pokémon -->
-<div>
-  <h2>Pokémon encontrados:</h2>
+    <button type="submit" class="search-button">Buscar</button>
+  </form>
+</section>
 
+<!-- Pokémon encontrados -->
+<section class="pokemons-list">
+  <h3>Pokémon encontrados:</h3>
+
+  <!-- Si no hay resultados -->
   <div th:if="${#lists.isEmpty(pokemons)}">
     <p>No se han encontrado Pokémon con los filtros seleccionados.</p>
   </div>
 
+  <!-- Si hay resultados -->
   <div th:if="${not #lists.isEmpty(pokemons)}">
-    <ul>
-      <li th:each="pokemon : ${pokemons}">
-        <div>
-          <h3 th:text="${pokemon.name}"></h3>
-          <p><strong>ID:</strong> <span th:text="${pokemon.id}"></span></p>
-          <p><strong>Tipo:</strong> <span th:text="${pokemon.types}"></span></p>
-          <p><strong>Región:</strong> <span th:text="${pokemon.regions}"></span></p>
-          <p><strong>Hábitat:</strong> <span th:text="${pokemon.habitat}"></span></p>
-        </div>
-      </li>
-    </ul>
+    <div class="pokemons-grid">
+      <!-- Cada tarjeta de Pokémon -->
+      <div th:each="pokemon : ${pokemons}" class="pokemon-card">
+        <h4 th:text="${pokemon.name}"></h4>
+        <p><strong>ID:</strong> <span th:text="${pokemon.id}"></span></p>
+        <p><strong>Tipo:</strong> <span th:text="${pokemon.types}"></span></p>
+        <p><strong>Región:</strong> <span th:text="${pokemon.regions}"></span></p>
+        <p><strong>Hábitat:</strong> <span th:text="${pokemon.habitat}"></span></p>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 </body>
 </html>
