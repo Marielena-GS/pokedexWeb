@@ -143,41 +143,51 @@ td, th {
         width: 95%;
     }
 }
-
 /* Estilos generales */
 .body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    /* Fondo con imagen en toda la pantalla */
+    background-image: url('logo_pokemon/fondo2.jpg');
+    background-size: cover;
 }
 
-/* Banner */
+/* ------------------ BANNER ------------------ */
 .banner {
-    background-color: #f6f6f4; /* Amarillo brillante */
+    /* Ocupa todo el ancho de la pantalla */
+    width: 100%;
+    background-color: #f6f5f2;
     display: flex;
     align-items: center;
-    padding: 15px 1000px; /* Banner más pequeño */
     justify-content: space-between;
+    /* Incrementa el padding para mayor margen interior */
+    padding: 30px 60px;
+    min-height: 95px; /* Aumenta esta cifra para mayor altura si lo deseas */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Logo del banner (más pequeño) */
+/* Logo (más grande si quieres) */
 .logo {
-    height: 15px;
+    height: 60px;
+    width: auto;
 }
 
 /* Texto dentro del banner */
 .banner-text h1 {
-    font-size: 1.8rem; /* Ajustado para que sea más compacto */
-    color: #343a40;
+    /* Letras más llamativas */
+    font-size: 2.4rem;
+    color: rgba(5, 25, 58, 0.77); /* Rojo intenso */
     margin: 0;
+    text-shadow: 2px 2px 4px #fafaf9; /* Sombra amarilla */
 }
 
-/* Contenedor y estilo de las imágenes de Pokémon en el banner */
-.pokemon-images {
+/* Contenedor de imágenes del banner (horizontal) */
+.banner-images {
     display: flex;
-    gap: 10px; /* Espacio entre sprites */
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .pokemon-image {
@@ -186,26 +196,27 @@ td, th {
     object-fit: contain;
 }
 
-/* Título principal */
+/* ------------------ TÍTULO PRINCIPAL ------------------ */
 .main-title {
-    text-align: right;
+    text-align: center;
     margin-top: 30px;
 }
 
 .main-title h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #343a40;
     font-weight: bold;
 }
 
-/* Sección del formulario de búsqueda */
+/* ------------------ FORMULARIO DE BÚSQUEDA ------------------ */
 .search-section {
-    margin: 30px 20px;
+    width: 100%;
+    margin: 30px auto;
 }
 
 .search-form {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap; /* Para que se ajusten si la pantalla es más pequeña */
     gap: 15px;
     background-color: #ffffff;
     padding: 20px;
@@ -213,46 +224,64 @@ td, th {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Cada campo se distribuye en un tercio si el ancho lo permite */
 .form-group {
+    flex: 1 1 calc(33% - 10px);
     display: flex;
     flex-direction: column;
 }
 
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
 .search-button {
     padding: 10px;
-    background-color: #007bff;
+    background-color: rgba(8, 50, 96, 0.89);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    /* Ocupa todo el ancho en pantallas pequeñas */
+    flex: 1 1 100%;
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 .search-button:hover {
-    background-color: #0056b3;
+    background-color: rgba(8, 50, 96, 0.89);
 }
 
-/* Sección de Pokémon encontrados */
+/* ------------------ LISTA DE POKÉMON ------------------ */
 .pokemons-list {
-    margin: 30px auto; /* Centramos horizontalmente */
-    width: 90%;       /* Usamos un 90% del ancho de la pantalla */
+    width: 90%;
+    margin: 30px auto;
 }
 
 .pokemons-list h3 {
     margin-bottom: 20px;
     text-align: center;
+    font-size: 1.5rem;
 }
 
-/* Aseguramos 5 columnas en pantalla amplia */
+/* Grid con 5 columnas fijas en pantallas grandes */
 .pokemons-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columnas fijas */
+    grid-template-columns: repeat(5, 1fr);
     gap: 15px;
 }
 
-/* Tarjetas de Pokémon */
+/* Tarjeta de cada Pokémon */
 .pokemon-card {
-    background-color: white;
+    background-color: #fff;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -268,4 +297,29 @@ td, th {
 .pokemon-card p {
     font-size: 0.9rem;
     color: #6c757d;
+}
+
+.pokemon-img {
+    width: 100px;      /* Ajusta el tamaño según tus necesidades */
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto; /* Centra la imagen y agrega un margen inferior */
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+/* Ajusta la grilla y el formulario en pantallas más pequeñas */
+@media (max-width: 992px) {
+    .pokemons-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas medianas */
+    }
+}
+
+@media (max-width: 600px) {
+    .pokemons-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas muy pequeñas */
+    }
+
+    .form-group {
+        flex: 1 1 100%; /* Cada select a la línea completa */
+    }
 }

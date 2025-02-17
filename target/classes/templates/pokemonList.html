@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ajusta la ruta según tu estructura de carpetas -->
   <link th:href="@{/style.css}" rel="stylesheet" type="text/css">
   <title>Categoría de Pokémons</title>
 </head>
@@ -10,12 +11,18 @@
 
 <!-- Banner -->
 <header class="banner">
-  <!-- Logo principal (más pequeño) -->
-  <img th:src="@{'/logo_pokemon/imagenpokemon.png'}" alt="Logo de Pokedex" class="h-10 w-10 mr-2">
+  <!-- Logo principal -->
+  <img th:src="@{'/logo_pokemon/imagenpokemon.png'}"
+       alt="Logo de Pokedex"
+       class="logo">
+
   <!-- Texto del banner -->
-  <div class="banner-text"><h1>Lista de Pokémones</h1></div>
-  <!-- Sprites de Pokémon (más pequeños) -->
-  <div class="pokemon-images">
+  <div class="banner-text">
+    <h1>Lista de Pokémones</h1>
+  </div>
+
+  <!-- Sprites de Pokémon, distribuidos en una fila -->
+  <div class="banner-images">
     <img th:src="@{'/pokemon_sprites/149.png'}" alt="pokemon_sprites" class="pokemon-image">
     <img th:src="@{'/pokemon_sprites/24.png'}"  alt="pokemon_sprites" class="pokemon-image">
     <img th:src="@{'/pokemon_sprites/1.png'}"   alt="pokemon_sprites" class="pokemon-image">
@@ -30,6 +37,7 @@
 <!-- Formulario de búsqueda -->
 <section class="search-section">
   <form action="/pokedex/pokemon/filter" method="get" class="search-form">
+
     <div class="form-group">
       <label for="type">Tipo:</label>
       <select name="type" id="type">
@@ -78,6 +86,8 @@
     <div class="pokemons-grid">
       <!-- Cada tarjeta de Pokémon -->
       <div th:each="pokemon : ${pokemons}" class="pokemon-card">
+        <!-- Imagen del Pokémon -->
+        <img th:src="@{'/pokemon_sprites/' + ${pokemon.id} + '.png'}" alt="Pokemon Image" class="pokemon-img"/>
         <h4 th:text="${pokemon.name}"></h4>
         <p><strong>ID:</strong> <span th:text="${pokemon.id}"></span></p>
         <p><strong>Tipo:</strong> <span th:text="${pokemon.types}"></span></p>
@@ -90,3 +100,4 @@
 
 </body>
 </html>
+
