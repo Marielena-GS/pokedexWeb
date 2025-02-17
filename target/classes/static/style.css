@@ -140,14 +140,14 @@ td, th {
 
 @media (max-width: 768px) {
     .container {
-        width: 95%;
+        width: 100%;
     }
 }
 /* Estilos generales */
 .body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 8%;
+    padding: 0;
     /* Fondo con imagen en toda la pantalla */
     background-image: url('logo_pokemon/fondo2.jpg');
     background-size: cover;
