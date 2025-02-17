@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -11,14 +11,17 @@
 <h1 class="title">Pokedex - Detalles del Pokemon</h1>
 
 <div>
+-->
     <!-- Buscar por ID -->
-    <form th:action="@{/pokedex/pokemon}" method="get">
+   <!--
+        <form th:action="@{/pokedex/pokemon}" method="get">
         <input type="number" name="id" min="1" th:value="${pokemon.id}" placeholder="Ingrese ID de Pokémon" required>
         <button type="submit">Buscar por ID</button>
     </form>
+-->
 
     <!-- Buscar por Nombre -->
-    <form th:action="@{/pokedex/pokemon}" method="get">
+<!--    <form th:action="@{/pokedex/pokemon}" method="get">
         <input type="text" name="name" placeholder="Ingrese Nombre de Pokémon" required>
         <button type="submit">Buscar por Nombre</button>
     </form>
@@ -77,5 +80,169 @@
 </div>
 
 
+</body>
+</html>
+-->
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link th:href="@{/style.css}" rel="stylesheet" type="text/css">
+    <title>Pokedex Web</title>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+<nav class="bg-white dark:bg-gray-800 shadow-md p-4 flex justify-between items-center">
+    <div class="flex items-center">
+        <img th:src="@{'/logo_pokemon/imagenpokemon.png'}" alt="Logo de Pokedex" class="h-10 w-10 mr-2">
+        <span class="text-xl font-bold">POKEDEX</span>
+    </div>
+    <div class="flex items-center space-x-4">
+        <a th:href="@{/pokedex/pokemon/filter(type='water', region='kanto', habitat='cave')}">
+            <button class="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none">Busqueda</button>
+        </a>
+        <button id="theme-toggle" class="focus:outline-none">
+            <i id="theme-icon" class="fas fa-moon text-xl"></i>
+        </button>
+    </div>
+</nav>
+
+<div class="flex-grow container mx-auto p-4 flex flex-col items-center">
+    <h1 class="text-3xl font-bold text-center mb-4">Pokedex</h1>
+
+    <div class="mb-4 w-full max-w-md">
+        <form th:action="@{/pokedex/pokemon}" method="get" class="mb-2 flex">
+            <input type="number" name="id" min="1" th:value="${pokemon.id}" placeholder="Ingrese ID del Pokémon" required class="flex-grow px-2 py-1 rounded-l-md border border-gray-300 dark:border-gray-700 focus:outline-none">
+            <button type="submit" class="px-3 py-1 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 focus:outline-none">Buscar por ID</button>
+        </form>
+
+        <form th:action="@{/pokedex/pokemon}" method="get" class="flex">
+            <input type="text" name="name" placeholder="Ingrese Nombre del Pokémon" required class="flex-grow px-2 py-1 rounded-l-md border border-gray-300 dark:border-gray-700 focus:outline-none">
+            <button type="submit" class="px-3 py-1 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 focus:outline-none">Buscar por Nombre</button>
+        </form>
+    </div>
+
+    <div class="mb-4 w-full max-w-md">
+        <p class="text-center text-lg">Un Pokémon es una criatura que vive en la naturaleza o junto a los humanos,</p>
+        <p class="text-center text-lg">y que aparece en la franquicia de videojuegos Pokémon. </p>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 p-4 rounded-md shadow-md w-full max-w-4xl">
+        <h2 class="text-2xl font-bold mb-4 text-center">Detalles del Pokémon</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <table class="min-w-full bg-white dark:bg-gray-800 rounded-md shadow-md">
+                <tbody>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Id:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.id}"></td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Nombre:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.name}"></td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Altura:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.height}"> m</td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Peso:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.weight}"> kg</td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">HP:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.stats_hp}"></td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Ataque:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.stats_attack}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="min-w-full bg-white dark:bg-gray-800 rounded-md shadow-md">
+                <tbody>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Defensa:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.stats_defense}"></td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Ataque Especial:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.stats_special_attack}"></td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Defensa Especial:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.stats_special_defense}"></td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Velocidad:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.stats_speed}"></td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Precisión:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.stats_accuracy}"></td>
+                </tr>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Evasión:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.stats_evasion}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-4">
+            <table class="min-w-full bg-white dark:bg-gray-800 rounded-md shadow-md">
+                <tbody>
+                <tr class="border-b border-gray-200 dark:border-gray-700">
+                    <td class="px-4 py-2 font-bold">Hábitat:</td>
+                    <td class="px-4 py-2" th:text="${pokemon.habitat}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4">
+            <h3 class="text-xl font-bold">Evoluciones del Pokémon:</h3>
+            <div class="grid grid-cols-2 gap-4 mt-2">
+                <div th:each="envolo : ${pokemon.envoles}">
+                    <img th:src="@{'/pokemon_sprites/' + ${envolo} + '.png'}" alt="Imagen del Pokémon" class="w-full h-auto rounded-md shadow-md">
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between mt-4">
+            <a th:href="@{/pokedex/pokemon(id=${prevId})}">
+                <button class="px-3 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none">Anterior</button>
+            </a>
+            <a th:href="@{/pokedex/pokemon(id=${nextId})}">
+                <button class="px-3 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none">Siguiente</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const darkMode = localStorage.getItem('darkMode');
+
+    if (darkMode === 'enabled') {
+        document.documentElement.classList.add('dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        if (document.documentElement.classList.contains('dark')) {
+            localStorage.setItem('darkMode', 'enabled');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            localStorage.setItem('darkMode', 'disabled');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+    });
+</script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -14,9 +14,6 @@ import java.util.Optional;
 public class PokemonDAO {
     @Autowired
     private PokemonService pokemonService;
-
-
-
     private int id;
     private String name;
     private int height;
@@ -216,8 +213,11 @@ public class PokemonDAO {
             }
         }
         pokemonDAO.setRegions(regionNames);
-        pokemonDAO.setHabitat(pokemon2Carg.getHabitat().getName());
-
+        if (pokemon2.get().getHabitat() == null) {
+            pokemonDAO.setHabitat("Ninguno");
+        }else {
+            pokemonDAO.setHabitat(pokemon2Carg.getHabitat().getName());
+        }
 
         return pokemonDAO;
     }
@@ -265,11 +265,11 @@ public class PokemonDAO {
 
         return pokemonDTO;
     }
-//evoluciones
+    //evoluciones
     //busqueda por ID
     public PokemonDTO buscarPokemon(int idPokemon){
         Optional<Pokemon> pokemon = pokemonService.findById(idPokemon);
-       PokemonDTO pokemonDTO = toDTO(toDAO(pokemon));
+        PokemonDTO pokemonDTO = toDTO(toDAO(pokemon));
         return pokemonDTO;
     }
     //Busqueda por Nombre

@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1524db48-afef-4d36-830a-4342caf7a5ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ec/edu/uce/pokedex/Service/CargarDatos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/logo_pokemon/imagenpokemon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/uce/pokedex/Controller/PokemonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/uce/pokedex/Controller/PokemonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ec/edu/uce/pokedex/DAO/PokemonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/edu/uce/pokedex/DAO/PokemonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ec/edu/uce/pokedex/Controller/PokemonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/edu/uce/pokedex/Controller/PokemonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ec/edu/uce/pokedex/DAO/PokemonDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/edu/uce/pokedex/DAO/PokemonDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +27,7 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -95,6 +101,7 @@
       <recent name="C:\Users\Sumon\Desktop\UCE\6to\PrograAvanzadaII\PokedexUltim\pokedex\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ORTEL\Documents\pokedexWeb\src\main\resources\static\logo_pokemon" />
       <recent name="C:\Users\Sumon\Desktop\UCE\6to\PrograAvanzadaII\PokedexUltim\pokedex\src\main\resources\static\pokemon_sprites" />
       <recent name="C:\Users\Sumon\Desktop\UCE\6to\PrograAvanzadaII\PokedexUltim\pokedex\src\main\resources\static" />
       <recent name="C:\Users\Sumon\Desktop\UCE\6to\PrograAvanzadaII\pokedex\src\main\resources\pokemon_sprites" />
@@ -145,7 +152,7 @@
       <workItem from="1739678927060" duration="32000" />
       <workItem from="1739715165098" duration="3967000" />
       <workItem from="1739726398660" duration="6439000" />
-      <workItem from="1739737631753" duration="8105000" />
+      <workItem from="1739737631753" duration="13319000" />
     </task>
     <servers />
   </component>
